@@ -1,0 +1,17 @@
+language: cpp
+
+branches:
+  only:
+    - master
+
+compiler: gcc
+
+before_script:
+  - mkdir build
+  - cd build
+
+# build instructions
+script:
+  - cmake -G "Unix Makefiles" ../
+  - cd $TRAVIS_BUILD_DIR/build
+  - make -j 4
