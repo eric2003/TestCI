@@ -6,6 +6,8 @@ function BuildTestCI() {
     cmake -G "Visual Studio 14 2015 Win64" ../
     dir
     msbuild Test.sln
+    cd TestCI
+    dir
     cmake --build . --target INSTALL --config release
     cd ..
 }
