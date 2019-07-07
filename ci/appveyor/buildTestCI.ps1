@@ -8,7 +8,7 @@ function BuildTestCI() {
     msbuild Test.sln
     cd TestCI/Release
     dir
-    TestCI.exe
+    Test.exe
     cmake --build . --target INSTALL --config release
     cd ..
 }
