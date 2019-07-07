@@ -5,6 +5,8 @@ branches:
 image: Visual Studio 2015
 configuration: release
 platform: x64
+environment:
+  PATH: C:\Program Files\Project\bin;%PATH%
 build_script:
 - ps: >-
     powershell ci\appveyor\buildTestCI.ps1
