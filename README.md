@@ -11,3 +11,5 @@
 
 ![GitHub All Releases](https://img.shields.io/github/downloads/eric2003/TestCI/total.svg)
 
+- Python package downloads: ![downloads](https://img.shields.io/badge/downloads-13k%2Fmonth-brightgreen.svg?cacheSeconds=2592000)
+
