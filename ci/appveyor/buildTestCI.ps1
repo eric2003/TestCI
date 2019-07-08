@@ -9,6 +9,7 @@ function BuildTestCI() {
     cd TestCI/Release
     dir
     ./Test.exe
+    ./Test.exe
     cmake --build . --target INSTALL --config release
     cd ..
 }
