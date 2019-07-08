@@ -9,7 +9,7 @@ function BuildTestCI() {
     cd TestCI/Release
     dir
     ./Test.exe
-   cd ../../
+   cd ../../../
    dir
 }
 
