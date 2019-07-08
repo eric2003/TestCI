@@ -13,4 +13,5 @@ build_script:
 test_script:
 - cmd: >-
 ECHO this is batch
+
 ECHO this is batch again
