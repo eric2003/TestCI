@@ -15,3 +15,5 @@ test_script:
     ECHO this is batch
     
     ECHO this is batch again
+    cd testcases
+    dir
