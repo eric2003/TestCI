@@ -10,3 +10,7 @@ environment:
 build_script:
 - ps: >-
     powershell ci\appveyor\buildTestCI.ps1
+test_script:
+  - cmd: >-
+    ECHO this is batch
+    cd testcases
