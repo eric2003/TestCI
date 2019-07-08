@@ -11,4 +11,6 @@ build_script:
 - ps: >-
     powershell ci\appveyor\buildTestCI.ps1
 test_script:
-- cmd: ECHO this is batch
+- cmd: >-
+ECHO this is batch
+ECHO this is batch again
