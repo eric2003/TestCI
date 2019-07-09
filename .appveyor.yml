@@ -7,8 +7,7 @@ configuration: release
 platform: x64
 environment:
   PYTHON: C:/Python37-x64
-  PRJ_NAME:Test
-  PATH: C:/Program Files/%PRJ_NAME%/bin;C:/Program Files/%PRJ_NAME%;%PATH%
+  PATH: C:/Program Files/Test/bin;C:/Program Files/Test;%PATH%
 build_script:
 - ps: >-
     powershell ci/appveyor/buildTestCI.ps1
@@ -22,6 +21,6 @@ test_script:
     
     ECHO %PATH%
     
-    %PYTHON%/python.exe regressionTests.py --mpirunPath=mpiexec.exe --exePath=Test.exe --operatingSystem=windows
+    %PYTHON%/python.exe regressionTests.py --mpirunPath=mpiexec.exe --exePath=%PRJ_NAME%.exe --operatingSystem=windows
     
     dir
