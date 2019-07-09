@@ -151,7 +151,8 @@ class regressionTest:
         print("Current directory:", os.getcwd())
         print("Modifying input file...")
         self.ModifyInputFile()
-        cmd = self.exePath + " " + self.caseName + ".inp > " + self.caseName + ".out"
+        #cmd = self.exePath + " " + self.caseName + ".inp > " + self.caseName + ".out"
+        cmd = self.exePath
         print(cmd)
         start = datetime.datetime.now()
         interval = start
