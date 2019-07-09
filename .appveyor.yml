@@ -6,7 +6,8 @@ image: Visual Studio 2015
 configuration: release
 platform: x64
 environment:
-  PATH: C:\Program Files\Project\bin;%PATH%
+  PYTHON: C:\Python37-x64
+  PATH: C:\Program Files\Project\bin;C:\Program Files\Microsoft MPI\Bin;
 build_script:
 - ps: >-
     powershell ci\appveyor\buildTestCI.ps1
@@ -18,4 +19,5 @@ test_script:
     
     cd testcases
     
+    %PYTHON%\python.exe regressionTests.py --mpirunPath=mpiexec.exe --exePath=Test.exe --operatingSystem=windows
     dir
