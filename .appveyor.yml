@@ -21,6 +21,6 @@ test_script:
     
     ECHO %PATH%
     
-    %PYTHON%/python.exe regressionTests.py --mpirunPath=mpiexec.exe --exePath=%PRJ_NAME%.exe --operatingSystem=windows
+    %PYTHON%/python.exe regressionTests.py --mpirunPath=mpiexec.exe --exePath=Test.exe --operatingSystem=windows
     
     dir
