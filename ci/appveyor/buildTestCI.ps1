@@ -4,13 +4,14 @@ function BuildTestCI() {
     md build
     cd build
     cmake -G "Visual Studio 14 2015 Win64" ../
-    dir
-    msbuild Test.sln
-    cd TestCI/Release
-    dir
-    ./Test.exe
-   cd ../../../
-   dir
+    cmake --build . --target INSTALL --config release
+#    dir
+#    msbuild Test.sln
+#    cd TestCI/Release
+#    dir
+#    ./Test.exe
+#   cd ../../../
+#   dir
 }
 
 function main() {

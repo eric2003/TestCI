@@ -63,6 +63,9 @@ endif(WIN32)
 #. add an executable to the project using the specified source files and header files:
 add_executable(${EXECUTABLE_TARGET_NAME} ${SRC_LIST} ${HEAD_LIST}) 
 
+install (TARGETS ${EXECUTABLE_TARGET_NAME} RUNTIME DESTINATION bin)
+	
+
                   
 #3. exit:          
 message(STATUS "--- Exit ${CMAKE_CURRENT_LIST_FILE}! ---")
