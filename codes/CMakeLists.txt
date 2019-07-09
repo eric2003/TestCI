@@ -4,6 +4,14 @@ message(STATUS "--- Enter subdirectory, Start to call ${CMAKE_CURRENT_LIST_FILE}
 message(STATUS "This current binary directory is ${CMAKE_CURRENT_BINARY_DIR}.")
 message(STATUS "This current source directory is ${CMAKE_CURRENT_SOURCE_DIR}.")
 
+message (STATUS "Installation directory: ${CMAKE_INSTALL_PREFIX}")
+message (STATUS "Include path: ${CMAKE_INCLUDE_PATH}")
+message (STATUS "Library path: ${CMAKE_LIBRARY_PATH}")
+message (STATUS "Prefix path: ${CMAKE_PREFIX_PATH}")
+message (STATUS "Module path: ${CMAKE_MODULE_PATH}")
+message (STATUS "Build type is: ${CMAKE_BUILD_TYPE}")
+message (STATUS "System name: ${CMAKE_SYSTEM_NAME}")
+
 if (CMAKE_GENERATOR MATCHES "Visual Studio 16 2019" )
 	set(VS_COMPILER vs2019)
 elseif (CMAKE_GENERATOR MATCHES "Visual Studio 15 2017" )
