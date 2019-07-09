@@ -7,7 +7,7 @@ configuration: release
 platform: x64
 environment:
   PYTHON: C:\Python37-x64
-  PATH: C:\Program Files\Project\bin;C:\Program Files\Microsoft MPI\Bin;
+  PATH: C:\Program Files\Project\bin;C:\Program Files\Microsoft MPI\Bin;C:\Program Files\Project;%PATH%
 build_script:
 - ps: >-
     powershell ci\appveyor\buildTestCI.ps1
