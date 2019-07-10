@@ -10,6 +10,13 @@ set(MY_WORKING_DIR TestCI)
 
 #output message:
 message(STATUS "Welcome to Build Project ${CMAKE_PROJECT_NAME}.")
+
+set (Test_VERSION_MAJOR 0)
+set (Test_VERSION_MINOR 10)
+set (Test_VERSION_PATCH 0)
+
+message (STATUS "Configuring Test v${Test_VERSION_MAJOR}.${Test_VERSION_MINOR}.${Test_VERSION_PATCH}")
+
 message(STATUS "The OS is ${CMAKE_SYSTEM_NAME}, version ${CMAKE_SYSTEM_VERSION}.")
 message(STATUS "The working directory is ${CMAKE_BINARY_DIR}/${MY_WORKING_DIR}.")
 message(STATUS "--- Start to call ${CMAKE_CURRENT_LIST_FILE} ---") 
