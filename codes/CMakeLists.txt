@@ -4,6 +4,13 @@ message(STATUS "--- Enter subdirectory, Start to call ${CMAKE_CURRENT_LIST_FILE}
 message(STATUS "This current binary directory is ${CMAKE_CURRENT_BINARY_DIR}.")
 message(STATUS "This current source directory is ${CMAKE_CURRENT_SOURCE_DIR}.")
 
+set (${CMAKE_PROJECT_NAME}_VERSION_MAJOR 0)
+set (${CMAKE_PROJECT_NAME}_MINOR 10)
+set (a${CMAKE_PROJECT_NAME}_PATCH 0)
+
+message (STATUS "Cmake version ${CMAKE_VERSION}")
+message (STATUS "Configuring aither v${${CMAKE_PROJECT_NAME}_VERSION_MAJOR}.${${CMAKE_PROJECT_NAME}_VERSION_MINOR}.${${CMAKE_PROJECT_NAME}_VERSION_PATCH}")
+
 message (STATUS "Installation directory: ${CMAKE_INSTALL_PREFIX}")
 message (STATUS "Include path: ${CMAKE_INCLUDE_PATH}")
 message (STATUS "Library path: ${CMAKE_LIBRARY_PATH}")
