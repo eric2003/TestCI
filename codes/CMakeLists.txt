@@ -88,6 +88,11 @@ message(STATUS "The CMAKE_CXX_COMPILER is ${CMAKE_CXX_COMPILER}")
 message(STATUS "The CMAKE_C_FLAGS is ${CMAKE_C_FLAGS}")
 message(STATUS "The CMAKE_CXX_FLAGS is ${CMAKE_CXX_FLAGS}")
 
+find_package (MPI REQUIRED)
+include_directories (SYSTEM "${MPI_INCLUDE_PATH}")
+
+message( STATUS "MPI_INCLUDE_PATH is ${MPI_INCLUDE_PATH}" )
+
 file(GLOB headerFile "*.h" )
 file(GLOB srcFile "*.cpp" )
 file(GLOB csrcFile "*.c" )
