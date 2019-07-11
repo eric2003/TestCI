@@ -35,6 +35,7 @@ function InstallCmake() {
     #(New-Object Net.WebClient).DownloadFile('https://github.com/Kitware/CMake/releases/download/v3.15.0-rc4/cmake-3.15.0-rc4-win64-x64.msi', $exePath)
     (New-Object Net.WebClient).DownloadFile('https://cmake.org/files/v3.15/cmake-3.15.0-rc4-win64-x64.msi', $exePath)
     Write-Host "Installing..."
+	Write-Host "$exePath"
     cmd /c start /wait $exePath /S
     cmake --version
     Write-Host "CMake 3.4.0 installed" -ForegroundColor Green
