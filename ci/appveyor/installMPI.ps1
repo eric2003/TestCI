@@ -13,7 +13,7 @@ function InstallMPI() {
     cd 
     dir
     c:
-    cd C:/Program Files (x86)/Microsoft SDKs/MPI
+    cd "C:/Program Files (x86)/Microsoft SDKs/MPI"
     dir
 }
 
