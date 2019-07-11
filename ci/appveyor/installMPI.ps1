@@ -38,11 +38,6 @@ function InstallCmake() {
     Write-Host "$exePath"
     cd $($env:USERPROFILE)
     dir
-    #cmd /c
-    #Write-Host "$cmd /c"
-    #cmd /c start
-    #Write-Host "$cmd /c start"
-    #dir
     $exePath
     Write-Host "execute..... "
     #cmd /c start /wait $exePath /S
