@@ -18,14 +18,15 @@ function InstallMPI() {
 }
 
 function InstallCmake() {
-    Write-Host "Installing CMake 3.4.0 ..." -ForegroundColor Cyan
-    $exePath = "$($env:USERPROFILE)/cmake-3.4.0-rc2-win32-x86.exe"
+    Write-Host "Installing CMake 3.14.5 ..." -ForegroundColor Cyan
+    $exePath = "$($env:USERPROFILE)/cmake-3.14.5-win64-x64.msi"
     Write-Host "Downloading..."
-    (New-Object Net.WebClient).DownloadFile('https://cmake.org/files/v3.4/cmake-3.4.0-rc2-win32-x86.exe', $exePath)
+    #(New-Object Net.WebClient).DownloadFile('https://cmake.org/files/v3.4/cmake-3.4.0-rc2-win32-x86.exe', $exePath)
+    (New-Object Net.WebClient).DownloadFile('https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-win64-x64.msi', $exePath)
     Write-Host "Installing..."
     cmd /c start /wait $exePath /S
     cmake --version
-    Write-Host "CMake 3.4.0 installed" -ForegroundColor Green
+    Write-Host "CMake 3.14.5 installed" -ForegroundColor Green
 }
 
 function main() {
