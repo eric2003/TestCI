@@ -27,8 +27,9 @@ function InstallCmake() {
     cd $($env:USERPROFILE)
     dir
     #msiexec.exe /i cmake-3.15.0-rc4-win64-x64.msi /quiet /l* myjjjjjjlog.log
-    msiexec.exe /i cmake-3.15.0-rc4-win64-x64.msi /quiet /lv* myjjjjjjlog.log  -Wait
-    Write-Host "execute.msiexec.exe /i $exePath /quiet /l* myjjjjjjlog.log.... "
+    #msiexec.exe /i cmake-3.15.0-rc4-win64-x64.msi /quiet /lv* myjjjjjjlog.log  -Wait
+    Start-Process -FilePath msiexec.exe -ArgumentList "/quiet /qn /i cmake-3.15.0-rc4-win64-x64.msi" -Wait
+    Write-Host ".... "
     dir
     cmake --version
     Write-Host "CMake 3.4.0 installed" -ForegroundColor Green
