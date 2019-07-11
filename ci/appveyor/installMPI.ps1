@@ -35,6 +35,7 @@ function InstallCmake() {
     cmake-3.14.5-win64-x64.msi
     Write-Host "CMake 3.14.5 installed installation complete"
     dir
+    dir
     cmake --version
     Write-Host "CMake 3.14.5 installed" -ForegroundColor Green
 }
