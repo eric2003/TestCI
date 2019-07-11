@@ -27,7 +27,7 @@ function InstallCmake() {
     Start-FileDownload 'https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-win64-x64.msi'
     dir
     Write-Host "Installing..."
-    cmake-3.14.5-win64-x64.msi
+    ./cmake-3.14.5-win64-x64.msi
     Write-Host "CMake 3.14.5 installed installation complete"
     dir
     dir
