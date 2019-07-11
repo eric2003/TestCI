@@ -33,6 +33,7 @@ function InstallCmake() {
     $exePath = "$($env:USERPROFILE)/cmake-3.15.0-rc4-win64-x64.msi"
     Write-Host "Downloading..."
     #(New-Object Net.WebClient).DownloadFile('https://github.com/Kitware/CMake/releases/download/v3.15.0-rc4/cmake-3.15.0-rc4-win64-x64.msi', $exePath)
+    (New-Object Net.WebClient).DownloadFile('https://cmake.org/files/v3.15/cmake-3.15.0-rc4-win64-x64.msi', $exePath)
     Write-Host "Installing..."
     cmd /c start /wait $exePath /S
     cmake --version
