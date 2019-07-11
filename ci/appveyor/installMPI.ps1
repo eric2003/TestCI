@@ -38,8 +38,11 @@ function InstallCmake() {
     Write-Host "$exePath"
     cd $($env:USERPROFILE)
     dir
-    $exePath
+    #$exePath
+    #msiexec.exe "/quiet /qn /i msmpisdk.msi"
+    msiexec.exe /i $exePath /quiet /l* myjjjjjjlog.log
     Write-Host "execute..... "
+    dir
     #cmd /c start /wait $exePath /S
     cmake --version
     Write-Host "CMake 3.4.0 installed" -ForegroundColor Green
