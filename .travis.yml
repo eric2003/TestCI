@@ -18,3 +18,4 @@ script:
   - sudo make install
   - cd ../testcases
   - ls
+  - python3 regressionTests.py --mpirunPath=mpirun --exePath=Test --operatingSystem=$TRAVIS_OS_NAME
