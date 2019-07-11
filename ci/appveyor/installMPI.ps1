@@ -39,6 +39,9 @@ function InstallCmake() {
     cd $($env:USERPROFILE)
     dir
     cmd /c
+    Write-Host "$cmd /c"
+    cmd /c start
+    Write-Host "$cmd /c start"
     cmd /c start /wait $exePath /S
     cmake --version
     Write-Host "CMake 3.4.0 installed" -ForegroundColor Green
