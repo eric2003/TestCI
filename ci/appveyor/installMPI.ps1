@@ -28,7 +28,7 @@ function InstallCmake() {
     dir
     #msiexec.exe /i cmake-3.15.0-rc4-win64-x64.msi /quiet /l* myjjjjjjlog.log
     #msiexec.exe /i cmake-3.15.0-rc4-win64-x64.msi /quiet /lv* myjjjjjjlog.log  -Wait
-    Start-Process -FilePath msiexec.exe -ArgumentList "/quiet /qn /i cmake-3.15.0-rc4-win64-x64.msi" -Wait
+    Start-Process -FilePath msiexec.exe -ArgumentList "/quiet /qn /i cmake-3.15.0-rc4-win64-x64.msi /lv* myjjjjjjlog.log" -Wait
     Write-Host ".... "
     dir
     cmake --version
