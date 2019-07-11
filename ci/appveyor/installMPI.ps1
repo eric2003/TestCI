@@ -26,7 +26,8 @@ function InstallCmake() {
     Write-Host "Installing..."
     cd $($env:USERPROFILE)
     dir
-    msiexec.exe /i cmake-3.15.0-rc4-win64-x64.msi /quiet /l* myjjjjjjlog.log
+    #msiexec.exe /i cmake-3.15.0-rc4-win64-x64.msi /quiet /l* myjjjjjjlog.log
+    msiexec.exe /i cmake-3.15.0-rc4-win64-x64.msi /quiet /lv* myjjjjjjlog.log  -Wait
     Write-Host "execute.msiexec.exe /i $exePath /quiet /l* myjjjjjjlog.log.... "
     dir
     cmake --version
