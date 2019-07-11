@@ -10,6 +10,8 @@ environment:
   PATH: C:/Program Files/Test/bin;C:/Program Files/Test;%PATH%
 build_script:
 - ps: >-
+    powershell ci/appveyor/installMPI.ps1
+    
     powershell ci/appveyor/buildTestCI.ps1
 test_script:
 - cmd: >-
