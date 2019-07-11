@@ -18,12 +18,16 @@ function InstallMPI() {
 }
 
 function InstallCmake() {
+    md cmake_tmp
+    cd cmake_tmp
+    dir
     Write-Host "Installing CMake 3.14.5 ..." -ForegroundColor Cyan
     $exePath = "$($env:USERPROFILE)/cmake-3.14.5-win64-x64.msi"
     Write-Host "Downloading..."
     #(New-Object Net.WebClient).DownloadFile('https://cmake.org/files/v3.4/cmake-3.4.0-rc2-win32-x86.exe', $exePath)
     #(New-Object Net.WebClient).DownloadFile('https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-win64-x64.msi', $exePath)
     appveyor DownloadFile https://github.com/Kitware/CMake/releases/download/v3.14.5/cmake-3.14.5-win64-x64.msi
+    dir
     Write-Host "Installing..."
     #cmd /c start /wait $exePath /S
     Start-Process -FilePath msiexec.exe -ArgumentList "/quiet /qn /i cmake-3.14.5-win64-x64.msi" -Wait
