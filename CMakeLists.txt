@@ -29,7 +29,6 @@ message(STATUS "The CMAKE_GENERATOR is ${CMAKE_GENERATOR}")
 message(STATUS "The CMAKE_CXX_COMPILER_VERSION is ${CMAKE_CXX_COMPILER_VERSION}")
 
 message(STATUS "The CMAKE_CXX_FLAGS is ${CMAKE_CXX_FLAGS}")
-#message(STATUS "The CMAKE_CXX_STANDARD is ${CMAKE_CXX_STANDARD}")
  
 if(WIN32)
    #add_compile_options(/std:c++11)
@@ -37,8 +36,6 @@ else(WIN32)
    add_compile_options(-std=gnu++11)
    #add_compile_options(-std=c++11)
 endif(WIN32)
-
-#message(STATUS "The new CMAKE_CXX_FLAGS is ${CMAKE_CXX_FLAGS}")
 
 #look for CMakeLists.txt in subdirectory <codes> and build an executable target:
 add_subdirectory(codes ${MY_WORKING_DIR})
