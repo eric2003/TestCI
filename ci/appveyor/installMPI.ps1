@@ -35,13 +35,10 @@ function InstallCmake() {
     #(New-Object Net.WebClient).DownloadFile('https://github.com/Kitware/CMake/releases/download/v3.15.0-rc4/cmake-3.15.0-rc4-win64-x64.msi', $exePath)
     (New-Object Net.WebClient).DownloadFile('https://cmake.org/files/v3.15/cmake-3.15.0-rc4-win64-x64.msi', $exePath)
     Write-Host "Installing..."
-    Write-Host "$exePath"
     cd $($env:USERPROFILE)
     dir
-    #$exePath
-    #msiexec.exe "/quiet /qn /i msmpisdk.msi"
     msiexec.exe /i $exePath /quiet /l* myjjjjjjlog.log
-    Write-Host "execute..... "
+    Write-Host "execute.msiexec.exe /i $exePath /quiet /l* myjjjjjjlog.log.... "
     dir
     #cmd /c start /wait $exePath /S
     cmake --version
