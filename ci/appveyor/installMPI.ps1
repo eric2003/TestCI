@@ -30,7 +30,8 @@ function InstallCmake() {
     dir
     Write-Host "Installing..."
     #cmd /c start /wait $exePath /S
-    Start-Process -FilePath msiexec.exe -ArgumentList "/quiet /qn /i cmake-3.14.5-win64-x64.msi" -Wait
+    #Start-Process -FilePath msiexec.exe -ArgumentList "/quiet /qn /i cmake-3.14.5-win64-x64.msi" -Wait
+    msiexec.exe
     Write-Host "CMake 3.14.5 installed installation complete"
     dir
     cmake --version
