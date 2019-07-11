@@ -88,6 +88,12 @@ message(STATUS "The CMAKE_CXX_COMPILER is ${CMAKE_CXX_COMPILER}")
 message(STATUS "The CMAKE_C_FLAGS is ${CMAKE_C_FLAGS}")
 message(STATUS "The CMAKE_CXX_FLAGS is ${CMAKE_CXX_FLAGS}")
 
+# determine if MPI_DIR has been set
+if (MPI_DIR)
+   message (STATUS "Looking for MPI here: ${MPI_DIR}")
+   set (CMAKE_PREFIX_PATH ${MPI_DIR})
+endif ()
+
 find_package (MPI REQUIRED)
 include_directories (SYSTEM "${MPI_INCLUDE_PATH}")
 
