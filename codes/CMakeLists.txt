@@ -122,10 +122,20 @@ endif ()
 
 find_package (MPI REQUIRED)
 include_directories (SYSTEM "${MPI_INCLUDE_PATH}")
+#link_libraries(${MPI_C_LIBRARIES})
 target_link_libraries (${EXECUTABLE_TARGET_NAME} ${MPI_C_LIBRARIES})
+link_directories(${MPI_DIR})
+
+message( STATUS "MPI_DIR is ${MPI_DIR}" )
+
+#target_link_libraries (${EXECUTABLE_TARGET_NAME} ${MPI_C_LIBRARIES})
+
+
+#link_libraries(${MPI_C_LIBRARIES})
 
 message( STATUS "MPI_INCLUDE_PATH is ${MPI_INCLUDE_PATH}" )
 message( STATUS "MPI_C_LIBRARIES is ${MPI_C_LIBRARIES}" )
+
 
 install (TARGETS ${EXECUTABLE_TARGET_NAME} RUNTIME DESTINATION bin)
     
