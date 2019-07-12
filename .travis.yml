@@ -4,7 +4,24 @@ branches:
   only:
     - master
 
-compiler: gcc
+#compiler: gcc
+# setup build matrix
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5 gcc-5 libstdc++-5-dev
+      env:
+        - CXX_COMPILER=g++-5
+        - C_COMPILER=gcc-5
+        - BUILD_TYPE=release
 
 # upgrade packages
 before_install:
