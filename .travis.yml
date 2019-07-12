@@ -4,7 +4,11 @@ branches:
   only:
     - master
 
-#compiler: gcc
+cache:
+  directories:
+    - openmpi
+    - openmpi-2.0.1
+
 # setup build matrix
 matrix:
   include:
