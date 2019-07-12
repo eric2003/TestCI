@@ -6,6 +6,18 @@ branches:
 
 compiler: gcc
 
+# upgrade packages
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y python3; fi
+  - test -n $CC && unset CC
+  - test -n $CXX && unset CXX
+  - which $CXX_COMPILER
+
+# install mpi
+install:
+  - bash ci/travis/installMPI 
+
 before_script:
   - mkdir build
   - cd build
