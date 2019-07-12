@@ -66,6 +66,6 @@ script:
   - sudo make install
   - cd ../testcases
   - ls
-  - ldd Test
+  - ldd ./Test
   - ldd /usr/local/bin/Test
   - python3 regressionTests.py --mpirunPath=mpirun --exePath=Test --operatingSystem=$TRAVIS_OS_NAME
