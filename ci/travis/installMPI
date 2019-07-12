@@ -12,6 +12,8 @@ if [ "$TRAVIS_OS_NAME" == "linux" ]; then
     tar zxf openmpi-2.0.1.tar.gz
     echo "Configuring and building OpenMPI"
     cd openmpi-2.0.1
+    ls
+    echo "$TRAVIS_BUILD_DIR"
     ./configure --prefix=$TRAVIS_BUILD_DIR/openmpi CC=$C_COMPILER CXX=$CXX_COMPILER &> openmpi.configure
     make -j4 &> openmpi.make
     make install &> openmpi.install
