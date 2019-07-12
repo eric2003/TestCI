@@ -4,10 +4,10 @@ branches:
   only:
     - master
 
-cache:
-  directories:
-    - openmpi
-    - openmpi-2.0.1
+#cache:
+#  directories:
+#    - openmpi
+#    - openmpi-2.0.1
 
 # setup build matrix
 matrix:
