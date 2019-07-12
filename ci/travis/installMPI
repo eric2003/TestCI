@@ -20,7 +20,7 @@ if [ "$TRAVIS_OS_NAME" == "linux" ]; then
     echo "-------------2------------------"
     echo "$TRAVIS_BUILD_DIR/openmpi"
     echo "CC=$C_COMPILER"
-    echo "CXX=$CXX_COMPILE"
+    echo "CXX=CXX_COMPILER"
     ./configure --prefix=$TRAVIS_BUILD_DIR/openmpi CC=$C_COMPILER CXX=$CXX_COMPILER &> openmpi.configure
     echo "-------------haha1------------------"
     make -j4 &> openmpi.make
