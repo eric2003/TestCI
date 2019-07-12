@@ -88,17 +88,6 @@ message(STATUS "The CMAKE_CXX_COMPILER is ${CMAKE_CXX_COMPILER}")
 message(STATUS "The CMAKE_C_FLAGS is ${CMAKE_C_FLAGS}")
 message(STATUS "The CMAKE_CXX_FLAGS is ${CMAKE_CXX_FLAGS}")
 
-# determine if MPI_DIR has been set
-if (MPI_DIR)
-   message (STATUS "Looking for MPI here: ${MPI_DIR}")
-   set (CMAKE_PREFIX_PATH ${MPI_DIR})
-endif ()
-
-find_package (MPI REQUIRED)
-include_directories (SYSTEM "${MPI_INCLUDE_PATH}")
-
-message( STATUS "MPI_INCLUDE_PATH is ${MPI_INCLUDE_PATH}" )
-
 file(GLOB headerFile "*.h" )
 file(GLOB srcFile "*.cpp" )
 file(GLOB csrcFile "*.c" )
@@ -125,10 +114,21 @@ endif(WIN32)
 #. add an executable to the project using the specified source files and header files:
 add_executable(${EXECUTABLE_TARGET_NAME} ${SRC_LIST} ${HEAD_LIST}) 
 
+# determine if MPI_DIR has been set
+if (MPI_DIR)
+   message (STATUS "Looking for MPI here: ${MPI_DIR}")
+   set (CMAKE_PREFIX_PATH ${MPI_DIR})
+endif ()
+
+find_package (MPI REQUIRED)
+include_directories (SYSTEM "${MPI_INCLUDE_PATH}")
+target_link_libraries (${EXECUTABLE_TARGET_NAME} ${MPI_C_LIBRARIES})
+
+message( STATUS "MPI_INCLUDE_PATH is ${MPI_INCLUDE_PATH}" )
+message( STATUS "MPI_C_LIBRARIES is ${MPI_C_LIBRARIES}" )
+
 install (TARGETS ${EXECUTABLE_TARGET_NAME} RUNTIME DESTINATION bin)
     
-
-                  
 #3. exit:          
 message(STATUS "--- Exit ${CMAKE_CURRENT_LIST_FILE}! ---")
  
