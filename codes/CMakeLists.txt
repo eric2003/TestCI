@@ -4,16 +4,6 @@ message(STATUS "--- Enter subdirectory, Start to call ${CMAKE_CURRENT_LIST_FILE}
 message(STATUS "This current binary directory is ${CMAKE_CURRENT_BINARY_DIR}.")
 message(STATUS "This current source directory is ${CMAKE_CURRENT_SOURCE_DIR}.")
 
-#set(PRJ_MAJOR "${CMAKE_PROJECT_NAME}_VERSION_MAJOR")
-
-#set (${CMAKE_PROJECT_NAME}_VERSION_MAJOR 0)
-#set (${CMAKE_PROJECT_NAME}_VERSION_MINOR 10)
-#set (${CMAKE_PROJECT_NAME}_VERSION_PATCH 0)
-
-#message (STATUS "Cmake version ${CMAKE_VERSION}")
-#message (STATUS "PRJ_MAJOR version ${PRJ_MAJOR}")
-#message (STATUS "PRJ_MAJOR version ${${PRJ_MAJOR}}")
-
 message (STATUS "Installation directory: ${CMAKE_INSTALL_PREFIX}")
 message (STATUS "Include path: ${CMAKE_INCLUDE_PATH}")
 message (STATUS "Library path: ${CMAKE_LIBRARY_PATH}")
@@ -96,23 +86,36 @@ message( STATUS ${srcFile} )
 message( STATUS ${headerFile} )
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
 
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    set( METIS_INCLUDE "C:/Program Files (x86)/METIS/include/")
+    set( METIS_LIB_DIR "C:/Program Files (x86)/METIS/lib/")
+    set( METIS_LIB "metis")
+else()
+    set( METIS_INCLUDE "usr/local/include/")
+    set( METIS_LIB_DIR "usr/local/lib/")
+    set( METIS_LIB "metis")
+endif()
+
+message( STATUS "The METIS_INCLUDE is ${METIS_INCLUDE}." )
+include_directories("${METIS_INCLUDE}")
+
 source_group("include" FILES ${headerFile})
 source_group("src" FILES ${srcFile})
 source_group("cfile" FILES ${csrcFile})
 list(APPEND HEAD_LIST ${headerFile})
 list(APPEND SRC_LIST ${srcFile} ${csrcFile} )
 
-#. set executable name:
-set(EXECUTABLE_TARGET_NAME "${CMAKE_PROJECT_NAME}")
-message(STATUS "The executable name is ${EXECUTABLE_TARGET_NAME}.")
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    link_directories("${PROJECT_SOURCE_DIR}/lib/windows/" )
+    link_directories("${MPI_DIR}")
+    link_directories("${METIS_LIB_DIR}")
+else()
+    link_directories("${MPI_DIR}")
+    link_directories("${METIS_LIB_DIR}")
+endif()
 
-if(WIN32)
-    link_directories("${PROJECT_SOURCE_DIR}/lib/windows/")
-else(WIN32)
-endif(WIN32)
-
-#. add an executable to the project using the specified source files and header files:
-add_executable(${EXECUTABLE_TARGET_NAME} ${SRC_LIST} ${HEAD_LIST}) 
+message( STATUS "The METIS_INCLUDE is ${METIS_INCLUDE}." )
+message( STATUS "The METIS_LIB_DIR is ${METIS_LIB_DIR}." )
 
 # determine if MPI_DIR has been set
 if (MPI_DIR)
@@ -122,19 +125,22 @@ endif ()
 
 find_package (MPI REQUIRED)
 include_directories (SYSTEM "${MPI_INCLUDE_PATH}")
-#link_libraries(${MPI_C_LIBRARIES})
-target_link_libraries (${EXECUTABLE_TARGET_NAME} ${MPI_C_LIBRARIES})
-link_directories(${MPI_DIR})
 
 message( STATUS "MPI_DIR is ${MPI_DIR}" )
-
-#target_link_libraries (${EXECUTABLE_TARGET_NAME} ${MPI_C_LIBRARIES})
-
-
-#link_libraries(${MPI_C_LIBRARIES})
-
 message( STATUS "MPI_INCLUDE_PATH is ${MPI_INCLUDE_PATH}" )
 message( STATUS "MPI_C_LIBRARIES is ${MPI_C_LIBRARIES}" )
+
+
+
+#. set executable name:
+set(EXECUTABLE_TARGET_NAME "${CMAKE_PROJECT_NAME}")
+message(STATUS "The executable name is ${EXECUTABLE_TARGET_NAME}.")
+
+#. add an executable to the project using the specified source files and header files:
+add_executable(${EXECUTABLE_TARGET_NAME} ${SRC_LIST} ${HEAD_LIST}) 
+
+target_link_libraries (${EXECUTABLE_TARGET_NAME} ${MPI_C_LIBRARIES} )
+target_link_libraries (${EXECUTABLE_TARGET_NAME} ${METIS_LIB} )
 
 
 install (TARGETS ${EXECUTABLE_TARGET_NAME} RUNTIME DESTINATION bin)

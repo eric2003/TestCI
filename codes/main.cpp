@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "mpi.h"
+#include "metis.h"
 using namespace std;
 
 #define HX_PARALLEL
@@ -63,6 +65,40 @@ std::string HXGetProcessorName()
     procName = cName;
 #endif
     return procName;
+}
+
+void PartByMetis( idx_t nCell, vector<idx_t>& xadj, vector<idx_t>& adjncy )
+{
+    idx_t   ncon     = 1;
+    idx_t   * vwgt   = 0;
+    idx_t   * vsize  = 0;
+    idx_t   * adjwgt = 0;
+    float * tpwgts = 0;
+    float * ubvec  = 0;
+    idx_t options[ METIS_NOPTIONS ];
+    idx_t wgtflag = 0;
+    idx_t numflag = 0;
+    idx_t objval;
+    idx_t nZone = 2;
+
+    vector<idx_t> gc2lzone;
+
+    METIS_SetDefaultOptions( options );
+    cout << "Now begining partition graph!\n";
+    if ( nZone > 8 )
+    {
+        cout << "Using K-way Partitioning!\n";
+        METIS_PartGraphKway( & nCell, & ncon, & xadj[ 0 ], & adjncy[ 0 ], vwgt, vsize, adjwgt, 
+                             & nZone, tpwgts, ubvec, options, & objval, & gc2lzone[ 0 ] );
+    }
+    else
+    {
+        cout << "Using Recursive Partitioning!\n";
+        METIS_PartGraphRecursive( & nCell, & ncon, & xadj[ 0 ], & adjncy[ 0 ], vwgt, vsize, adjwgt, 
+                                  & nZone, tpwgts, ubvec, options, & objval, & gc2lzone[ 0 ] );
+    }
+    cout << "The interface number: " << objval << endl; 
+    cout << "Partition is finished!\n";
 }
 
 int main( int argc, char ** argv )
