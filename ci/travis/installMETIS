@@ -5,7 +5,7 @@ if [ "$TRAVIS_OS_NAME" == "linux" ]; then
     cd  lib
     ls
     echo "Compile METIS Source"
-    tar xzvf metis-5.0.1eric.tar.gz
-    cd metis-5.0.1eric
+    tar xzvf metis-5.1.0eric.tar.gz
+    cd metis-5.1.0eric
     ls
 fi
