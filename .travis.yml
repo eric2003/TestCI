@@ -66,7 +66,7 @@ script:
   - sudo make install
   - cd ../testcases
   - ls
-  - ldd ./Test
+  - ldd Test
   - ldd /usr/local/bin/Test
   - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/openmpi/lib:$LD_LIBRARY_PATH
   - sudo ldconfig
