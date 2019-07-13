@@ -11,4 +11,7 @@ if [ "$TRAVIS_OS_NAME" == "linux" ]; then
     echo "compiler is $C_COMPILER"
     make config cc=$C_COMPILER
     make
+    ls
+    sudo make install 
+    ls /usr/local
 fi
