@@ -15,7 +15,7 @@ int HXInit()
     int err      = 0;
     int argc     = 0;
     char *** argv = 0;
-	return HXInit( argc, argv );
+    return HXInit( argc, argv );
 }
 
 int HXInit( int & argc, char *** argv )
@@ -36,41 +36,41 @@ void HXFinalize()
 
 int HXRank()
 {
-	int rank = 0;
+    int rank = 0;
 #ifdef HX_PARALLEL
-	MPI_Comm_rank( MPI_COMM_WORLD, & rank );
+    MPI_Comm_rank( MPI_COMM_WORLD, & rank );
 #endif
-	return rank;
+    return rank;
 }
 
 int HXSize()
 {
-	int size = 1;
+    int size = 1;
 #ifdef HX_PARALLEL
     MPI_Comm_size( MPI_COMM_WORLD, & size );
 #endif
-	return size;
+    return size;
 }
 
 std::string HXGetProcessorName()
 {
-	string procName = "";
+    string procName = "";
 #ifdef HX_PARALLEL
-	char cName[ MPI_MAX_PROCESSOR_NAME ];
+    char cName[ MPI_MAX_PROCESSOR_NAME ];
     int nLength = 0;
 
-	MPI_Get_processor_name( cName, & nLength );
+    MPI_Get_processor_name( cName, & nLength );
     procName = cName;
 #endif
-	return procName;
+    return procName;
 }
 
 int main( int argc, char ** argv )
 {
-	cout << "haha\n";
-	HXInit();
-	string s = HXGetProcessorName();
-	cout << " s= " << s << "\n";
-	HXFinalize();
-	return 0;
+    cout << "haha\n";
+    HXInit();
+    string s = HXGetProcessorName();
+    cout << " The processor name is  " << s << "\n";
+    HXFinalize();
+    return 0;
 }
