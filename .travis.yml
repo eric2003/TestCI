@@ -68,4 +68,8 @@ script:
   - ls
   - ldd ./Test
   - ldd /usr/local/bin/Test
+  - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/openmpi/lib:$LD_LIBRARY_PATH
+  - ldconfig
+  - ldd ./Test
+  - ldd /usr/local/bin/Test
   - python3 regressionTests.py --mpirunPath=mpirun --exePath=Test --operatingSystem=$TRAVIS_OS_NAME
