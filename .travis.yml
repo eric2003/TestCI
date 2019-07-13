@@ -53,6 +53,7 @@ before_install:
 # install mpi
 install:
   - bash ci/travis/installMPI 
+  - bash ci/travis/installMETIS 
 
 before_script:
   - mkdir build
