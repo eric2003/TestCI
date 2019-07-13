@@ -61,15 +61,12 @@ before_script:
 # build instructions
 script:
   - cmake -G "Unix Makefiles" -DCMAKE_CXX_COMPILER=$CXX_COMPILER -DCMAKE_C_COMPILER=$C_COMPILER -DMPI_DIR=$TRAVIS_BUILD_DIR/openmpi ../
-  #- cd $TRAVIS_BUILD_DIR/build
   - make -j 4
   - sudo make install
   - cd ../testcases
   - ls
-  - ldd . Test
   - ldd /usr/local/bin/Test
   - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/openmpi/lib:$LD_LIBRARY_PATH
   - sudo ldconfig
-  - ldd . Test
   - ldd /usr/local/bin/Test
   - python3 regressionTests.py --mpirunPath=mpirun --exePath=Test --operatingSystem=$TRAVIS_OS_NAME
