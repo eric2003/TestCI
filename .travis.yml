@@ -87,7 +87,7 @@ script:
   - mpirun -np 1 ./cpi
   - mpirun -np 2 ./cpi
   - which mpicxx
-  - mpicxx -O3 cpi.cpp -o haha
+  - mpicxx -O3 ccpi.cpp -o haha
   - mpirun -np 1 ./haha
   - mpirun -np 2 ./haha
   - echo "mpirun -np 1 test again"
