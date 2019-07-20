@@ -75,6 +75,8 @@ script:
   - echo "/mpirun -np 2 test"
   - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 2 test
   - echo "test finshed----------------"
+  - export PATH=$PATH:$TRAVIS_BUILD_DIR/openmpi/bin
+  - source .~/.bashrc
   - echo $PATH
   - echo $LD_LIBRARY_PATH
   - which mpirun
