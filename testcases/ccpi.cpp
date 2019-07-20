@@ -30,9 +30,8 @@ int main(int argc, char *argv[])
     MPI_Comm_rank(MPI_COMM_WORLD, &myid);
     MPI_Get_processor_name(processor_name, &namelen);
 
-    //fprintf(stdout, "Process %d of %d is on %s\n", myid, numprocs, processor_name);
-    //fflush(stdout);
     cout << "haha\n";
+    cout << "Process " << myid << " of " << numprocs << " is on " << processor_name << "\n";
 
     n = 10000;  /* default # of rectangles */
     if (myid == 0)
