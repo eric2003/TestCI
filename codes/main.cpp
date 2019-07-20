@@ -104,28 +104,27 @@ void PartByMetis( idx_t nCell, vector<idx_t>& xadj, vector<idx_t>& adjncy )
 int main( int argc, char ** argv )
 {
     cout << "haha\n";
-    //HXInit();
-    //string s = HXGetProcessorName();
-    //cout << " The processor name is  " << s << "\n";
+    HXInit();
+    string s = HXGetProcessorName();
+    cout << " The processor name is  " << s << "\n";
+    HXFinalize();
+    //int myid, numprocess;
+    //int namelen;
+    //char processor_name[MPI_MAX_PROCESSOR_NAME];
+    //cout << "haha\n";
+    //cout << " argc = " << argc << "\n";
+    //MPI_Init(&argc, &argv);
+    //MPI_Comm_rank(MPI_COMM_WORLD, &myid);
+    //MPI_Comm_size(MPI_COMM_WORLD, &numprocess);
+    //MPI_Get_processor_name(processor_name, &namelen);
 
-    int myid, numprocess;
-    int namelen;
-    char processor_name[MPI_MAX_PROCESSOR_NAME];
-    cout << "haha\n";
-    cout << " argc = " << argc << "\n";
-    MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD, &myid);
-    MPI_Comm_size(MPI_COMM_WORLD, &numprocess);
-    MPI_Get_processor_name(processor_name, &namelen);
+    //cout << "To you : Process " << myid << "of" << numprocess << " on " << processor_name << "\n";
+    //int n = 10;
+    //int m = 0;
+    //MPI_Allreduce( &n, &m, 1, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD );
+    //cout << " n = " << n << " m = " << m << "\n";
 
-    cout << "To you : Process " << myid << "of" << numprocess << " on " << processor_name << "\n";
-    int n = 10;
-    int m = 0;
-    MPI_Allreduce( &n, &m, 1, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD );
-    cout << " n = " << n << " m = " << m << "\n";
+    //MPI_Finalize();
 
-    MPI_Finalize();
-
-    //HXFinalize();
     return 0;
 }
