@@ -6,6 +6,7 @@
 
 #include "mpi.h"
 #include <iostream>
+#include <string>
 #include <cmath>
 using namespace std;
 
@@ -21,6 +22,8 @@ double f(double a)
 int HXInit();
 int HXInit( int & argc, char *** argv );
 void HXFinalize();
+int HXRank();
+int HXSize();
 
 int HXInit()
 {
@@ -46,26 +49,64 @@ void HXFinalize()
 #endif
 }
 
+int HXRank()
+{
+    int rank = 0;
+#ifdef HX_PARALLEL
+    MPI_Comm_rank( MPI_COMM_WORLD, & rank );
+#endif
+    return rank;
+}
+
+int HXSize()
+{
+    int size = 1;
+#ifdef HX_PARALLEL
+    MPI_Comm_size( MPI_COMM_WORLD, & size );
+#endif
+    return size;
+}
+
+std::string HXGetProcessorName()
+{
+    string procName = "";
+#ifdef HX_PARALLEL
+    char cName[ MPI_MAX_PROCESSOR_NAME ];
+    int nLength = 0;
+
+    MPI_Get_processor_name( cName, & nLength );
+    procName = cName;
+#endif
+    return procName;
+}
+
 
 int main(int argc, char *argv[])
 {
     int n, myid, numprocs, i;
     double PI25DT = 3.141592653589793238462643;
-    double mypi, pi, h, sum, x;
+    //double mypi, pi, h, sum, x;
+    double h, sum, x;
     double startwtime = 0.0, endwtime;
     int namelen;
-    char processor_name[MPI_MAX_PROCESSOR_NAME];
+    //char processor_name[MPI_MAX_PROCESSOR_NAME];
 
     cout << "--------------before haha----------------------\n";
     cout << "--------------HXInit()----------------------\n";
     HXInit();
     //HXInit(argc, &argv );
     //MPI_Init(&argc, &argv);
-    MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
-    MPI_Comm_rank(MPI_COMM_WORLD, &myid);
-    MPI_Get_processor_name(processor_name, &namelen);
+    //MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
+    //MPI_Comm_rank(MPI_COMM_WORLD, &myid);
+    numprocs = HXSize();
+    myid = HXRank();
+    //MPI_Get_processor_name(processor_name, &namelen);
+    string processor_name = HXGetProcessorName();
+
+
 
     cout << "haha\n";
+    //cout << "Process " << myid << " of " << numprocs << " is on " << processor_name << "\n";
     cout << "Process " << myid << " of " << numprocs << " is on " << processor_name << "\n";
 
     n = 10000;  /* default # of rectangles */
@@ -85,7 +126,9 @@ int main(int argc, char *argv[])
         x = h * ((double) i - 0.5);
         sum += f(x);
     }
-    mypi = h * sum;
+
+    double mypi = h * sum;
+    double pi;
 
     MPI_Reduce(&mypi, &pi, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
