@@ -108,10 +108,11 @@ int main( int argc, char ** argv )
     //string s = HXGetProcessorName();
     //cout << " The processor name is  " << s << "\n";
 
-int myid, numprocess;
-int namelen;
-char processor_name[MPI_MAX_PROCESSOR_NAME];
-
+    int myid, numprocess;
+    int namelen;
+    char processor_name[MPI_MAX_PROCESSOR_NAME];
+    cout << "haha\n";
+    cout << " argc = " << argc << "\n";
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &myid);
     MPI_Comm_size(MPI_COMM_WORLD, &numprocess);
