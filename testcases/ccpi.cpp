@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
     MPI_Reduce(&mypi, &pi, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
     double aaa = 1.0;
     double bbb = -1.0;
-    MPI_AllReduce(&aaa, &bbb, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+    MPI_AllReduce(&aaa, &bbb, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
     if ( myid == 0 )
     {
