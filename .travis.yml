@@ -71,8 +71,8 @@ script:
   - sudo ldconfig
   - ldd /usr/local/bin/Test
   - echo "run test"
-  - mpi $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 1 test
+  - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 1 test
   - echo "/mpirun -np 2 test"
-  - mpi $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 1 test
+  - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 2 test
   - echo "test finshed----------------"
   - python3 regressionTests.py --mpirunPath=mpirun --exePath=Test --operatingSystem=$TRAVIS_OS_NAME
