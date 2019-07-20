@@ -75,4 +75,9 @@ script:
   - echo "/mpirun -np 2 test"
   - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 2 test
   - echo "test finshed----------------"
+  - echo $PATH
+  - which mpirun
+  - which mpicc
+  - mpicc -O3 cpi.c -o cpi
+  - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 1 ./cpi
   - python3 regressionTests.py --mpirunPath=mpirun --exePath=Test --operatingSystem=$TRAVIS_OS_NAME
