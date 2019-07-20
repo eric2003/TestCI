@@ -70,11 +70,11 @@ script:
   - export LD_LIBRARY_PATH=$TRAVIS_BUILD_DIR/openmpi/lib:$LD_LIBRARY_PATH
   - sudo ldconfig
   - ldd /usr/local/bin/Test
-  - echo "run test"
-  - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 1 test
-  - echo "/mpirun -np 2 test"
-  - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 2 test
-  - echo "test finshed----------------"
+  - echo "run Test"
+  - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 1 Test
+  - echo "/mpirun -np 2 Test"
+  - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 2 Test
+  - echo "Test finshed----------------"
   - export PATH=$PATH:$TRAVIS_BUILD_DIR/openmpi/bin
   - source ~/.bashrc
   - echo $PATH
@@ -90,8 +90,8 @@ script:
   - mpicxx -O3 ccpi.cpp -o haha
   - mpirun -np 1 ./haha
   - mpirun -np 2 ./haha
-  - echo "mpirun -np 1 test again"
-  - mpirun -np 1 test
-  - echo "mpirun -np 2 test again"
-  - mpirun -np 1 test
+  - echo "mpirun -np 1 Test again"
+  - mpirun -np 1 Test
+  - echo "mpirun -np 2 Test again"
+  - mpirun -np 1 Test
   - python3 regressionTests.py --mpirunPath=mpirun --exePath=Test --operatingSystem=$TRAVIS_OS_NAME
