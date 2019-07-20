@@ -34,15 +34,19 @@ int main(int argc, char *argv[])
     cout << "Process " << myid << " of " << numprocs << " is on " << processor_name << "\n";
 
     n = 10000;  /* default # of rectangles */
-    if (myid == 0)
+    if ( myid == 0 )
+    {
         startwtime = MPI_Wtime();
+    }
+        
 
     MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
     h = 1.0 / (double) n;
     sum = 0.0;
     /* A slightly better approach starts from large i and works back */
-    for (i = myid + 1; i <= n; i += numprocs) {
+    for ( int i = myid + 1; i <= n; i += numprocs )
+    {
         x = h * ((double) i - 0.5);
         sum += f(x);
     }
@@ -50,12 +54,11 @@ int main(int argc, char *argv[])
 
     MPI_Reduce(&mypi, &pi, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
-    if (myid == 0) {
+    if ( myid == 0 )
+    {
         endwtime = MPI_Wtime();
-        //printf("pi is approximately %.16f, Error is %.16f\n", pi, fabs(pi - PI25DT));
-        //printf("wall clock time = %f\n", endwtime - startwtime);
-        cout << "pi = " << pi << "\n";
-        //fflush(stdout);
+        cout << "pi is approximately " << pi << " Error is " << fabs(pi - PI25DT) << "\n";
+        cout << "wall clock time = " << endwtime - startwtime << "\n";
     }
 
     MPI_Finalize();
