@@ -121,7 +121,7 @@ int main( int argc, char ** argv )
     //cout << "To you : Process " << myid << "of" << numprocess << " on " << processor_name << "\n";
     //int n = 10;
     //int m = 0;
-    //MPI_Allreduce( &n, &m, 1, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD );
+    MPI_Allreduce( &n, &m, 1, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD );
     //cout << " n = " << n << " m = " << m << "\n";
 
     //MPI_Finalize();
