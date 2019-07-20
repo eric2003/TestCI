@@ -9,12 +9,43 @@
 #include <cmath>
 using namespace std;
 
+#define HX_PARALLEL
+
 double f(double a);
 
 double f(double a)
 {
     return (4.0 / (1.0 + a * a));
 }
+
+int HXInit();
+int HXInit( int & argc, char *** argv );
+void HXFinalize();
+
+int HXInit()
+{
+    int err      = 0;
+    int argc     = 0;
+    char *** argv = 0;
+    return HXInit( argc, argv );
+}
+
+int HXInit( int & argc, char *** argv )
+{
+    int err = 0;
+#ifdef HX_PARALLEL
+    err = MPI_Init( & argc, argv );
+#endif
+    return err;
+}
+
+void HXFinalize()
+{
+#ifdef HX_PARALLEL
+    int err = MPI_Finalize();
+#endif
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -26,8 +57,8 @@ int main(int argc, char *argv[])
     char processor_name[MPI_MAX_PROCESSOR_NAME];
 
     cout << "--------------before haha----------------------\n";
-
-    MPI_Init(&argc, &argv);
+    HXInit(argc, &argv );
+    //MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
     MPI_Comm_rank(MPI_COMM_WORLD, &myid);
     MPI_Get_processor_name(processor_name, &namelen);
@@ -63,6 +94,7 @@ int main(int argc, char *argv[])
         cout << "wall clock time = " << endwtime - startwtime << "\n";
     }
 
-    MPI_Finalize();
+    //MPI_Finalize();
+    HXFinalize();
     return 0;
 }
