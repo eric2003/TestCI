@@ -84,6 +84,12 @@ script:
   - mpicc -O3 cpi.c -o cpi
   - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 1 ./cpi
   - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 2 ./cpi
+  - mpirun -np 1 ./cpi
+  - mpirun -np 2 ./cpi
+  - which mpicxx
+  - mpicxx -O3 cpi.cpp -o haha
+  - mpirun -np 1 ./haha
+  - mpirun -np 2 ./haha
   - echo "mpirun -np 1 test again"
   - mpirun -np 1 test
   - echo "mpirun -np 2 test again"
