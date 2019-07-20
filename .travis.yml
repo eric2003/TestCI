@@ -93,5 +93,5 @@ script:
   - echo "mpirun -np 1 Test again"
   - mpirun -np 1 Test
   - echo "mpirun -np 2 Test again"
-  - mpirun -np 1 Test
+  - mpirun -np 2 Test
   - python3 regressionTests.py --mpirunPath=mpirun --exePath=Test --operatingSystem=$TRAVIS_OS_NAME
