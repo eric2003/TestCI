@@ -76,6 +76,7 @@ script:
   - $TRAVIS_BUILD_DIR/openmpi/bin/mpirun -np 2 test
   - echo "test finshed----------------"
   - echo $PATH
+  - echo $LD_LIBRARY_PATH
   - which mpirun
   - which mpicc
   - mpicc -O3 cpi.c -o cpi
