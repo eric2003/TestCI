@@ -7,6 +7,7 @@
 #include "mpi.h"
 #include <iostream>
 #include <cmath>
+using namespace std;
 
 double f(double a);
 
