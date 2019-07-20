@@ -57,7 +57,9 @@ int main(int argc, char *argv[])
     char processor_name[MPI_MAX_PROCESSOR_NAME];
 
     cout << "--------------before haha----------------------\n";
-    HXInit(argc, &argv );
+    cout << "--------------HXInit()----------------------\n";
+    HXInit();
+    //HXInit(argc, &argv );
     //MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
     MPI_Comm_rank(MPI_COMM_WORLD, &myid);
