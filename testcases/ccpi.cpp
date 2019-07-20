@@ -136,10 +136,10 @@ int main(int argc, char *argv[])
     MPI_Allreduce(&aaa, &bbb, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
     cout << " myid = " << myid << " aaa=" << aaa << " bbb = " << bbb << "\n";
 
-    int a = 1;
-    int b = 0;
-    MPI_Allreduce( &a, &b, 1, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD );
-    cout << "myid = " << myid << " a = " << a << " b = " << b << "\n";
+    //int a = 1;
+    //int b = 0;
+    //MPI_Allreduce( &a, &b, 1, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD );
+    //cout << "myid = " << myid << " a = " << a << " b = " << b << "\n";
 
     int c = 1;
     int d = -1;
